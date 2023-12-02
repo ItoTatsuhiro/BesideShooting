@@ -3,8 +3,9 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "GameFramework/GameModeBase.h"
 #include "GameFramework/PlayerController.h"
-#include "Blueprint/UserWidget.h"
+#include "konishiC++/BallPlayer.h"
 #include "MyPlayerController.generated.h"
 
 
@@ -13,24 +14,32 @@
  * 
  */
 UCLASS()
-class BESIDESHOOTING_API AMyPlayerController : public APlayerController
+class BESIDESHOOTING_API AMyPlayerController : public AGameModeBase
 {
 	GENERATED_BODY()
 
 public:
-
+	// Constructor
 	AMyPlayerController();
 
 protected:
-
+	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
+public:
+	/** Player‚ğ”jŠü‚·‚é **/
+	void KillPlayer(ABallPlayer* Player);
+
+	/** Game‚ğRestart‚·‚é **/
+	void RestartGame();
+
+	/** æ“¾‚µ‚½ƒRƒCƒ“‚Ì–‡”‚ğ’Ç‰Á‚·‚é */
+	int AddCoin(const int32 CoinNumber);
+
+	// Player‚ğRespawn‚·‚éˆÊ’uî•ñ
+	FTransform SpawnTransform;
+
 private:
-
-//	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Widgets, meta = (AllowPrivateAccess = "true"))
-//		TSubclassOf HUDOverlayClass;
-
-	//UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Widgets, meta = (AllowPrivateAccess = "true"))
-	//	UUserWidget* HUDOverlay;
-	
+	/** Player‚ğRespawn‚·‚é **/
+	void RespawnPlayer();
 };
