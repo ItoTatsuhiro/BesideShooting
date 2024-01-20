@@ -5,10 +5,12 @@
 #include "Kismet/GameplayStatics.h"
 #include "GameFramework/PlayerStart.h"
 #include "konishiC++/RollingBallGameInstance.h"
+#include "konishiC++/InGameHUD.h"
 
 AMyPlayerController::AMyPlayerController()
 {
 	DefaultPawnClass = ABallPlayer::StaticClass();
+	HUDClass = AInGameHUD::StaticClass();
 }
 
 void AMyPlayerController::BeginPlay()

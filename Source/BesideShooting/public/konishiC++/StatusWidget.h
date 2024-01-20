@@ -26,11 +26,11 @@ private:
 	UPROPERTY(meta = (BindWidget))
 		class UTextBlock* TextBlockHealthMax;
 
-	UPROPERTY(meta = (BindWidget))
+	/*UPROPERTY(meta = (BindWidget))
 		class UTextBlock* TextBlockTotalLifes;
 
 	UPROPERTY(meta = (BindWidget))
-		class UTextBlock* TextBlockTotalCoins;
+		class UTextBlock* TextBlockTotalCoins;*/
 
 	UFUNCTION()
 		FText SetTextBlockHealth();
@@ -38,10 +38,10 @@ private:
 	UFUNCTION()
 		FText SetTextBlockHealthMax();
 
-	UFUNCTION()
+	/*UFUNCTION()
 		FText SetTextBlockTotalLifes();
 
 	UFUNCTION()
-		FText SetTextBlockTotalCoins();
+		FText SetTextBlockTotalCoins();*/
 	
 };

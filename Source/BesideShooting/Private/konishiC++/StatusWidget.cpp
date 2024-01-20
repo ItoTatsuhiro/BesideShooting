@@ -18,9 +18,9 @@ bool UStatusWidget::Initialize()
 
 	if (!Success) return false;
 
-	/*TextBlockHealth->TextDelegate.BindUFunction(this, "SetTextBlockHealth");
+	TextBlockHealth->TextDelegate.BindUFunction(this, "SetTextBlockHealth");
 	TextBlockHealthMax->TextDelegate.BindUFunction(this, "SetTextBlockHealthMax");
-	TextBlockTotalLifes->TextDelegate.BindUFunction(this, "SetTextBlockTotalLifes");
+	/*TextBlockTotalLifes->TextDelegate.BindUFunction(this, "SetTextBlockTotalLifes");
 	TextBlockTotalCoins->TextDelegate.BindUFunction(this, "SetTextBlockTotalCoins");*/
 
 	return true;
@@ -50,27 +50,27 @@ FText UStatusWidget::SetTextBlockHealthMax()
 	return FText();
 }
 
-FText UStatusWidget::SetTextBlockTotalLifes()
-{
-	// GameInstance‚ðŽæ“¾‚·‚é
-	if (const URollingBallGameInstance* GameInstance = Cast<URollingBallGameInstance>(UGameplayStatics::GetGameInstance(GetWorld())))
-	{
-		// GameInstance‚ÌTotalLifes‚ðText‚ÉÝ’è‚·‚é
-		return FText::FromString(FString::FromInt(GameInstance->TotalLifes));
-	}
-
-	return FText();
-}
-
-FText UStatusWidget::SetTextBlockTotalCoins()
-{
-	// GameInstance‚ðŽæ“¾‚·‚é
-	if (const URollingBallGameInstance* GameInstance = Cast<URollingBallGameInstance>(UGameplayStatics::GetGameInstance(GetWorld())))
-	{
-		// GameInstance‚ÌTotalCoins‚ðText‚ÉÝ’è‚·‚é
-		return FText::FromString(FString::FromInt(GameInstance->TotalCoins));
-	}
-
-	return FText();
-}
-
+//FText UStatusWidget::SetTextBlockTotalLifes()
+//{
+//	// GameInstance‚ðŽæ“¾‚·‚é
+//	if (const URollingBallGameInstance* GameInstance = Cast<URollingBallGameInstance>(UGameplayStatics::GetGameInstance(GetWorld())))
+//	{
+//		// GameInstance‚ÌTotalLifes‚ðText‚ÉÝ’è‚·‚é
+//		return FText::FromString(FString::FromInt(GameInstance->TotalLifes));
+//	}
+//
+//	return FText();
+//}
+//
+//FText UStatusWidget::SetTextBlockTotalCoins()
+//{
+//	// GameInstance‚ðŽæ“¾‚·‚é
+//	if (const URollingBallGameInstance* GameInstance = Cast<URollingBallGameInstance>(UGameplayStatics::GetGameInstance(GetWorld())))
+//	{
+//		// GameInstance‚ÌTotalCoins‚ðText‚ÉÝ’è‚·‚é
+//		return FText::FromString(FString::FromInt(GameInstance->TotalCoins));
+//	}
+//
+//	return FText();
+//}
+//
