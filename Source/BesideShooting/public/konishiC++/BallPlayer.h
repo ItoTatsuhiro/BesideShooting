@@ -1,4 +1,8 @@
 // Fill out your copyright notice in the Description page of Project Settings.
+//
+// 作成日　2023 / 11 / 18
+// 作成者　小西
+//
 
 #pragma once
 
@@ -49,6 +53,15 @@ public:
 
 	float GetHealthMax() const { return HealthMax; }
 
+
+	//作成日 : 2024 / 1 / 27
+	//フレーム間の移動量を格納する変数
+	//FVector LastFrameLocation;
+
+	////Called every frame
+	//virtual void Tick(float DeltaTime)override;
+
+
 protected:
 	/** BallをControlする */
 	void ControlBall(const FInputActionValue& Value);
@@ -61,6 +74,9 @@ protected:
 
 	// 加速する
 	void Boost(const FInputActionValue& Value);
+
+	
+
 
 private:
 	/** Character用のStaticMesh : Sphere */

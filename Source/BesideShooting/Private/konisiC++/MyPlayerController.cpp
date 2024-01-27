@@ -30,22 +30,22 @@ void AMyPlayerController::KillPlayer(ABallPlayer* Player)
 	Player->Destroy();
 
 	// GameInstance‚ğæ“¾‚·‚é
-	URollingBallGameInstance* GameInstance = Cast<URollingBallGameInstance>(UGameplayStatics::GetGameInstance(GetWorld()));
+	APlayerCharacter* GameInstance = Cast<APlayerCharacter>(UGameplayStatics::GetGameInstance(GetWorld()));
 
 	// TotalLifes‚ğDecriment‚·‚é
-	GameInstance->TotalLifes--;
+	//GameInstance->TotalLifes--;
 
-	if (0 <= GameInstance->TotalLifes)
-	{
-		// Respawn‚ğs‚¤
-		RespawnPlayer();
-	}
-	else
-	{
-		// Game‚ğRestart‚·‚é
-		UE_LOG(LogTemp, Display, TEXT("GameOver"));
-		RestartGame();
-	}
+	//if (0 <= GameInstance->TotalLifes)
+	//{
+	//	// Respawn‚ğs‚¤
+	//	RespawnPlayer();
+	//}
+	//else
+	//{
+	//	// Game‚ğRestart‚·‚é
+	//	UE_LOG(LogTemp, Display, TEXT("GameOver"));
+	//	RestartGame();
+	//}
 }
 
 void AMyPlayerController::RestartGame()

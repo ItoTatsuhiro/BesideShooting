@@ -83,6 +83,10 @@ void APlayerCharacter::Tick(float DeltaTime)
 		FVector NextLocation = GetActorLocation() + (curVel_ * DeltaTime);
 		SetActorLocation(NextLocation);
 
+		// 移動距離を計測し、イベントで通知
+		CurrentDistance += curVel_.Size() * DeltaTime;
+		OnDistanceUpdated().Broadcast(CurrentDistance);
+
 	}
 
 }

@@ -128,6 +128,16 @@ void ABallPlayer::SetupPlayerInputComponent(UInputComponent* PlayerInputComponen
 	}
 }
 
+//void ABallPlayer::Tick(float DeltaTime)
+//{
+//	Super::Tick(DeltaTime);
+//
+//	FVector CurrentLocation = GetActorLocation();
+//	FVector DeltaLocation = CurrentLocation - LastFrameLocation;
+//
+//	LastFrameLocation = CurrentLocation;
+//}
+
 void ABallPlayer::ControlBall(const FInputActionValue& Value)
 {
 	// input‚ÌValue‚ÍVector2D‚É•ÏŠ·‚Å‚«‚é

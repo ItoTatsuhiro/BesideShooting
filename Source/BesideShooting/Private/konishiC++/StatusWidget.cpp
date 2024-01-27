@@ -10,6 +10,7 @@
 void UStatusWidget::NativeConstruct()
 {
 	Super::NativeConstruct();
+
 }
 
 bool UStatusWidget::Initialize()
@@ -20,8 +21,8 @@ bool UStatusWidget::Initialize()
 
 	TextBlockHealth->TextDelegate.BindUFunction(this, "SetTextBlockHealth");
 	TextBlockHealthMax->TextDelegate.BindUFunction(this, "SetTextBlockHealthMax");
-	/*TextBlockTotalLifes->TextDelegate.BindUFunction(this, "SetTextBlockTotalLifes");
-	TextBlockTotalCoins->TextDelegate.BindUFunction(this, "SetTextBlockTotalCoins");*/
+	/*TextBlockDistance->TextDelegate.BindUFunction(this, "SetTextBlockDistance");
+	TextBlockMeter->TextDelegate.BindUFunction(this, "SetTextMeter");*/
 
 	return true;
 }
@@ -50,7 +51,7 @@ FText UStatusWidget::SetTextBlockHealthMax()
 	return FText();
 }
 
-//FText UStatusWidget::SetTextBlockTotalLifes()
+//FText UStatusWidget::SetTextBlockDistance()
 //{
 //	// GameInstance‚ğæ“¾‚·‚é
 //	if (const URollingBallGameInstance* GameInstance = Cast<URollingBallGameInstance>(UGameplayStatics::GetGameInstance(GetWorld())))
@@ -61,16 +62,38 @@ FText UStatusWidget::SetTextBlockHealthMax()
 //
 //	return FText();
 //}
-//
-//FText UStatusWidget::SetTextBlockTotalCoins()
-//{
-//	// GameInstance‚ğæ“¾‚·‚é
-//	if (const URollingBallGameInstance* GameInstance = Cast<URollingBallGameInstance>(UGameplayStatics::GetGameInstance(GetWorld())))
-//	{
-//		// GameInstance‚ÌTotalCoins‚ğText‚Éİ’è‚·‚é
-//		return FText::FromString(FString::FromInt(GameInstance->TotalCoins));
-//	}
-//
-//	return FText();
-//}
-//
+
+FText UStatusWidget::SetTextMeter()
+{
+	// GameInstance‚ğæ“¾‚·‚é
+	if (const URollingBallGameInstance* GameInstance = Cast<URollingBallGameInstance>(UGameplayStatics::GetGameInstance(GetWorld())))
+	{
+		// GameInstance‚ÌTotalCoins‚ğText‚Éİ’è‚·‚é
+		return FText::FromString(FString::FromInt(GameInstance->TotalCoins));
+	}
+
+	return FText();
+}
+
+void UStatusWidget::HandleDistanceUpdated(float NewDistance)
+{
+
+	//ì¬“ú@2024 : 1 / 27
+	//PlayerCharacter‚Ìæ“¾
+	if (APlayerCharacter* Player = Cast<APlayerCharacter>(UGameplayStatics::GetPlayerPawn(GetWorld(), 0)))
+	{
+		Player->OnDistanceUpdated().AddUObject(this, &UStatusWidget::HandleDistanceUpdated);
+	}
+
+
+	if (UWidget* Widget = GetWidgetFromName(TEXT("TextBlockDistance"))) {
+		if (UTextBlock* DistanceTextBlock = Cast<UTextBlock>(Widget))
+		{
+			TextBlockDistance->SetText(FText::FromString(FString::Printf(TEXT("Distance: %.2f"), NewDistance)));
+		}
+	}
+	
+
+
+}
+

@@ -1,9 +1,14 @@
 // Fill out your copyright notice in the Description page of Project Settings.
+///
+/// çÏê¨ì˙Å@2024 : 11 / 18 Å`
+/// çÏê¨é“Å@è¨êº
+///
 
 #pragma once
 
 #include "CoreMinimal.h"
 #include "Blueprint/UserWidget.h"
+#include"ItoC++/PlayerCharacter.h"
 #include "StatusWidget.generated.h"
 
 class UTextBlock;
@@ -27,10 +32,10 @@ private:
 		class UTextBlock* TextBlockHealthMax;
 
 	/*UPROPERTY(meta = (BindWidget))
-		class UTextBlock* TextBlockTotalLifes;
+		class UTextBlock* TextBlockDistance;*/
 
 	UPROPERTY(meta = (BindWidget))
-		class UTextBlock* TextBlockTotalCoins;*/
+		class UTextBlock* TextBlockMeter;
 
 	UFUNCTION()
 		FText SetTextBlockHealth();
@@ -39,9 +44,16 @@ private:
 		FText SetTextBlockHealthMax();
 
 	/*UFUNCTION()
-		FText SetTextBlockTotalLifes();
+		FText SetTextBlockDistance();*/
 
 	UFUNCTION()
-		FText SetTextBlockTotalCoins();*/
+		FText SetTextMeter();
 	
+public:
+	 
+	UFUNCTION()
+		void HandleDistanceUpdated(float NewDistance);
+
+	class UTextBlock* TextBlockDistance;
+
 };

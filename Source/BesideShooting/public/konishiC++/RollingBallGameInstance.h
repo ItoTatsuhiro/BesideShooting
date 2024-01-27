@@ -24,4 +24,8 @@ public:
 
 	/** Player‚ÌLife **/
 	int32 TotalLifes = 3;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "PlayerDistance");
+	float PlayerDistance;
+
 };

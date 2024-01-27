@@ -6,6 +6,7 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Pawn.h"
+#include "konishiC++/RollingBallGameInstance.h"
 #include "PlayerCharacter.generated.h"
 
 class UStaticMeshComponent;
@@ -63,12 +64,28 @@ protected:
 	// 入力用の変数
 	FVector curVel_;
 
+
+
 public:	
 
 
+	//作成日 2024 : 1 / 27
+	//作成者　小西
+	//プレイヤーの距離を取得する
+	DECLARE_EVENT_OneParam(APlayerCharacter, FDistanceUpdatedEvent, float);
+	FDistanceUpdatedEvent& OnDistanceUpdated() { return DistanceUpdatedEvent; }
 
 
 	void Move_XAxis(float val);
 	void Move_YAxis(float val);
+
+
+private:
+
+	//作成日 2024 : 1 / 27
+	//作成者　小西
+	//距離を計算した際に呼ぶイベント
+	FDistanceUpdatedEvent DistanceUpdatedEvent;
+	float CurrentDistance;
 
 };
